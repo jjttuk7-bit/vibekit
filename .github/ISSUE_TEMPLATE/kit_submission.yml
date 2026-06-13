@@ -1,0 +1,83 @@
+name: Submit a VibeKit kit
+description: Suggest a copy-ready AI kit for the VibeKit library.
+title: "[Kit]: "
+labels: ["kit-submission"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting a VibeKit kit. Keep it practical, original, and clear about source inspiration.
+  - type: input
+    id: title
+    attributes:
+      label: Kit title
+      description: Use a clear builder-friendly title.
+      placeholder: "Example: Context Pack Builder Kit"
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - Prompt Kits
+        - Context Kits
+        - Harness Kits
+        - Loop Kits
+        - Skill Kits
+        - Agent Kits
+        - Codex Kits
+        - RAG Kits
+        - Business Kits
+        - Writing Kits
+    validations:
+      required: true
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What does this kit help a builder do?
+      placeholder: "One or two plain-English sentences."
+    validations:
+      required: true
+  - type: textarea
+    id: workflow
+    attributes:
+      label: Workflow steps
+      description: List the practical steps a user should follow.
+      placeholder: |
+        1. Gather the required context.
+        2. Run the prompt.
+        3. Verify the output.
+    validations:
+      required: true
+  - type: textarea
+    id: copy_block
+    attributes:
+      label: Copy-paste block
+      description: Include the draft prompt, checklist, or workflow block.
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Source inspiration and license notes
+      description: Add URLs, license information, and whether this is original, adapted with attribution, reference only, or do not copy directly.
+      placeholder: |
+        Source URL:
+        License:
+        Reuse status:
+        Notes:
+    validations:
+      required: true
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Safety checks
+      options:
+        - label: I wrote this in original wording or clearly marked source inspiration.
+          required: true
+        - label: I did not include leaked, proprietary, or unclear-rights prompt text.
+          required: true
+        - label: I included attribution and license notes when a source inspired the kit.
+          required: true
