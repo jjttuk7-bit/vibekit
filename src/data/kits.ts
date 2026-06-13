@@ -146,6 +146,72 @@ const seeds: KitSeed[] = [
     featured: true,
   },
   {
+    slug: "codex-agents-md-setup-kit",
+    title: "Codex AGENTS.md Setup Kit",
+    category: "codex-kits",
+    summary: "Create durable repository instructions that help Codex work safely and consistently.",
+    description:
+      "A setup kit for writing an AGENTS.md file that gives Codex practical project context, commands, coding rules, review guidance, and verification expectations.",
+    difficulty: "Intermediate",
+    bestFor: ["Codex", "Repository maintainers", "AI-assisted development"],
+    useWhen: [
+      "Codex needs persistent project instructions",
+      "A repo has repeated setup, test, or review expectations",
+    ],
+    doNotUseWhen: [
+      "The repo is too early to have stable conventions",
+      "Instructions would expose secrets or private operational details",
+    ],
+    requiredContext: [
+      "Repository purpose",
+      "Install, dev, lint, test, and build commands",
+      "Coding style and review rules",
+      "Safety boundaries and files to avoid",
+      "Definition of done",
+    ],
+    workflowSteps: [
+      "Inventory the repo context Codex needs before editing.",
+      "Document the commands Codex should run for setup and verification.",
+      "Write coding, review, and safety rules in direct language.",
+      "Place broader rules at the repo root and package-specific rules closer to the code when needed.",
+      "Test the file by asking Codex to summarize the instructions and run a small safe task.",
+    ],
+    promptFocus:
+      "Create a practical AGENTS.md file that helps Codex work in this repository with clear context, commands, and verification rules.",
+    expectedOutput:
+      "A ready-to-review AGENTS.md draft with project overview, commands, implementation rules, source policy, and verification checklist.",
+    sourceInspiration:
+      "Adapted from OpenAI Codex documentation about AGENTS.md as persistent repository guidance, closest-file instruction discovery, and repository review customization.",
+    sourceReferences: [
+      {
+        title: "Custom instructions with AGENTS.md",
+        url: "https://developers.openai.com/codex/guides/agents-md",
+        publisher: "OpenAI",
+        license: "OpenAI documentation terms; reference only for this kit.",
+        note: "Used to ground the kit's guidance on repository instruction files and how Codex discovers them.",
+      },
+      {
+        title: "Codex code review in GitHub",
+        url: "https://developers.openai.com/codex/integrations/github#customize-what-codex-reviews",
+        publisher: "OpenAI",
+        license: "OpenAI documentation terms; reference only for this kit.",
+        note: "Used to ground the kit's recommendation to include review expectations and file-specific guidance.",
+      },
+      {
+        title: "Codex glossary",
+        url: "https://developers.openai.com/codex/glossary",
+        publisher: "OpenAI",
+        license: "OpenAI documentation terms; reference only for this kit.",
+        note: "Used as a reference for Codex concepts such as context, AGENTS.md, sandboxing, and verification.",
+      },
+    ],
+    licenseNote:
+      "Original VibeKit wording adapted from public OpenAI Codex documentation concepts. Do not copy OpenAI documentation examples directly; link to the source references when publishing derivative guidance.",
+    reuseStatus: "adapted_with_attribution",
+    tags: ["codex", "agents-md", "repo", "instructions"],
+    featured: true,
+  },
+  {
     slug: "codex-fix-until-green-kit",
     title: "Codex Fix Until Green Kit",
     category: "codex-kits",

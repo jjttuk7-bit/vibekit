@@ -20,7 +20,7 @@ The MVP includes:
 - Searchable kits listing page
 - Kit detail pages with copy-paste prompt blocks
 - Category, source policy, about, support, and submit pages
-- 20 local static sample kits
+- 21 local static sample kits
 - Source inspiration, license notes, and reuse status on kit pages
 - GitHub Issue Form for kit submissions
 
