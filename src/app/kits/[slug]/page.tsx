@@ -107,6 +107,30 @@ export default async function KitDetailPage({ params }: Props) {
                 <dt className="font-black">Source inspiration</dt>
                 <dd className="mt-1 leading-7 text-[var(--muted)]">{kit.sourceInspiration}</dd>
               </div>
+              {kit.sourceReferences && kit.sourceReferences.length > 0 && (
+                <div>
+                  <dt className="font-black">Source references</dt>
+                  <dd className="mt-3 grid gap-3">
+                    {kit.sourceReferences.map((source) => (
+                      <a
+                        key={source.url}
+                        href={source.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="focus-ring block rounded-md border border-[var(--line)] bg-[var(--paper)] p-4 transition hover:border-[var(--ink)]"
+                      >
+                        <span className="block font-black">{source.title}</span>
+                        <span className="mt-1 block text-sm font-bold text-[var(--muted)]">
+                          {source.publisher} · {source.license}
+                        </span>
+                        <span className="mt-2 block leading-7 text-[var(--muted)]">
+                          {source.note}
+                        </span>
+                      </a>
+                    ))}
+                  </dd>
+                </div>
+              )}
               <div>
                 <dt className="font-black">License note</dt>
                 <dd className="mt-1 leading-7 text-[var(--muted)]">{kit.licenseNote}</dd>

@@ -31,6 +31,14 @@ export type ToolVersion = {
   prompt: string;
 };
 
+export type SourceReference = {
+  title: string;
+  url: string;
+  publisher: string;
+  license: string;
+  note: string;
+};
+
 export type Kit = {
   id: string;
   slug: string;
@@ -51,6 +59,7 @@ export type Kit = {
   toolVersions: ToolVersion[];
   tags: string[];
   sourceInspiration: string;
+  sourceReferences?: SourceReference[];
   licenseNote: string;
   reuseStatus: ReuseStatus;
   featured?: boolean;

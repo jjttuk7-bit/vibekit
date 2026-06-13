@@ -9,6 +9,7 @@ type KitSeed = Omit<
   | "expectedOutput"
   | "toolVersions"
   | "sourceInspiration"
+  | "sourceReferences"
   | "licenseNote"
   | "reuseStatus"
 > & {
@@ -16,6 +17,8 @@ type KitSeed = Omit<
   expectedOutput?: string;
   reuseStatus?: ReuseStatus;
   sourceInspiration?: string;
+  sourceReferences?: Kit["sourceReferences"];
+  licenseNote?: string;
 };
 
 function buildPrompt(title: string, focus: string, steps: string[]) {
@@ -74,7 +77,9 @@ function makeKit(index: number, seed: KitSeed): Kit {
     sourceInspiration:
       seed.sourceInspiration ??
       "Original VibeKit pattern inspired by common public builder workflows and open-source practice.",
+    sourceReferences: seed.sourceReferences,
     licenseNote:
+      seed.licenseNote ??
       "Original VibeKit wording. If you adapt this from a specific repository or article, add attribution and license notes before publishing.",
     reuseStatus: seed.reuseStatus ?? "original",
   };
@@ -123,6 +128,20 @@ const seeds: KitSeed[] = [
       "Compress into a reusable context pack.",
     ],
     promptFocus: "Create a compact context pack for repeated AI-assisted work.",
+    sourceInspiration:
+      "Adapted from OpenAI prompt-engineering guidance about giving models relevant context, constraints, examples, and success criteria.",
+    sourceReferences: [
+      {
+        title: "Prompt engineering",
+        url: "https://developers.openai.com/api/docs/guides/prompt-engineering",
+        publisher: "OpenAI",
+        license: "OpenAI documentation terms; reference only for this kit.",
+        note: "Used to ground the kit's emphasis on clear context, constraints, examples, and output expectations.",
+      },
+    ],
+    licenseNote:
+      "Original VibeKit wording adapted from public OpenAI prompt-engineering concepts. Do not copy OpenAI docs text or examples directly.",
+    reuseStatus: "adapted_with_attribution",
     tags: ["context", "instructions", "reuse"],
     featured: true,
   },
@@ -146,6 +165,27 @@ const seeds: KitSeed[] = [
     ],
     promptFocus: "Fix the current repo issue with a tight test-driven loop.",
     expectedOutput: "Passing checks plus a short summary of cause, fix, and verification.",
+    sourceInspiration:
+      "Adapted from OpenAI Codex concepts around repository instructions, agent context, tool use, and prompt guidance that emphasizes testing and validation for coding tasks.",
+    sourceReferences: [
+      {
+        title: "Codex glossary",
+        url: "https://developers.openai.com/codex/glossary",
+        publisher: "OpenAI",
+        license: "OpenAI documentation terms; reference only for this kit.",
+        note: "Used to ground Codex concepts such as AGENTS.md, agent context, sandboxing, and verification-oriented coding work.",
+      },
+      {
+        title: "Prompt engineering: coding guidance",
+        url: "https://developers.openai.com/api/docs/guides/prompt-engineering",
+        publisher: "OpenAI",
+        license: "OpenAI documentation terms; reference only for this kit.",
+        note: "Used to ground the kit's emphasis on explicit coding workflow, test commands, and validation.",
+      },
+    ],
+    licenseNote:
+      "Original VibeKit wording adapted from public OpenAI Codex and prompt-engineering concepts. Source links are attribution references, not copied prompt text.",
+    reuseStatus: "adapted_with_attribution",
     tags: ["codex", "testing", "debugging"],
     featured: true,
   },
@@ -213,7 +253,18 @@ const seeds: KitSeed[] = [
     promptFocus: "Turn a source into a grounded summary card for retrieval and reuse.",
     tags: ["rag", "sources", "attribution"],
     sourceInspiration:
-      "Inspired by public RAG documentation patterns and citation-first research workflows.",
+      "Adapted from OpenAI documentation patterns for including relevant context and retrieval-augmented generation. VibeKit rewrites the workflow as a source-summary kit with attribution and reuse notes.",
+    sourceReferences: [
+      {
+        title: "Prompt engineering: include relevant context information",
+        url: "https://developers.openai.com/api/docs/guides/prompt-engineering#include-relevant-context-information",
+        publisher: "OpenAI",
+        license: "OpenAI documentation terms; reference only for this kit.",
+        note: "Used as conceptual grounding for adding trusted source context and constraining model responses to selected resources.",
+      },
+    ],
+    licenseNote:
+      "Original VibeKit wording adapted from public OpenAI documentation concepts. Do not copy OpenAI examples or docs text directly; link to the source when publishing derivative guidance.",
     reuseStatus: "adapted_with_attribution",
   },
   {
@@ -493,7 +544,25 @@ const seeds: KitSeed[] = [
     promptFocus: "Help classify open-source inspiration and write reuse notes for this kit.",
     tags: ["license", "attribution", "open-source"],
     sourceInspiration:
-      "Inspired by common open-source compliance checklists and attribution practice.",
+      "Adapted from GitHub Docs and ChooseALicense guidance about repository licensing, no-license defaults, and attribution hygiene.",
+    sourceReferences: [
+      {
+        title: "Licensing a repository",
+        url: "https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository",
+        publisher: "GitHub Docs",
+        license: "GitHub documentation terms; reference only for this kit.",
+        note: "Used to ground the distinction between public code visibility and open-source reuse permission.",
+      },
+      {
+        title: "No License",
+        url: "https://choosealicense.com/no-permission/",
+        publisher: "ChooseALicense",
+        license: "Creative Commons Attribution 3.0 Unported for site content.",
+        note: "Used to ground the warning that missing licenses usually do not grant permission to use, modify, or share software.",
+      },
+    ],
+    licenseNote:
+      "Original VibeKit wording adapted from GitHub Docs and ChooseALicense concepts. This kit is not legal advice; treat unclear reuse rights as a human-review issue.",
     reuseStatus: "adapted_with_attribution",
   },
   {
@@ -515,6 +584,27 @@ const seeds: KitSeed[] = [
       "Decide whether the workflow is ready to publish.",
     ],
     promptFocus: "QA this AI workflow so it is safe, clear, and reusable.",
+    sourceInspiration:
+      "Adapted from OpenAI evaluation guidance for agent workflows, graders, datasets, and repeatable quality checks.",
+    sourceReferences: [
+      {
+        title: "Evaluate agent workflows",
+        url: "https://developers.openai.com/api/docs/guides/agent-evals",
+        publisher: "OpenAI",
+        license: "OpenAI documentation terms; reference only for this kit.",
+        note: "Used to ground the kit's focus on traces, graders, datasets, and eval runs as quality signals.",
+      },
+      {
+        title: "Eval Driven System Design",
+        url: "https://developers.openai.com/cookbook/examples/partners/eval_driven_system_design/receipt_inspection#graders",
+        publisher: "OpenAI Cookbook",
+        license: "OpenAI Cookbook/documentation terms; reference only for this kit.",
+        note: "Used as conceptual inspiration for separating narrow checks, holistic review, and expected-output comparison.",
+      },
+    ],
+    licenseNote:
+      "Original VibeKit wording adapted from public OpenAI eval concepts. The checklist is a VibeKit QA pattern, not a copy of the source examples.",
+    reuseStatus: "adapted_with_attribution",
     tags: ["qa", "workflow", "verification"],
     featured: true,
   },
