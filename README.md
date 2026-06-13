@@ -1,48 +1,155 @@
-# VibeKit — Codex Build Document Pack
+# VibeKit
 
-이 문서 세트는 Codex/Claude Code/Cursor 같은 코딩 에이전트에게 `VibeKit` 서비스를 만들게 하기 위한 실행 문서입니다.
+Everything you need to vibe with AI, copy-ready.
 
-## Service Concept
+VibeKit is a lightweight library of copy-ready AI kits for prompts, context,
+loops, agents, Codex workflows, RAG workflows, business workflows, and writing
+workflows.
 
-VibeKit is a copy-ready AI kit library. It curates useful open-source AI patterns from GitHub and converts them into practical, license-aware kits for prompt engineering, context engineering, harness engineering, loop engineering, and reusable AI skills.
+Live site: https://vibekit-seven.vercel.app/
 
-The product should feel less like a rigid developer documentation site and more like a friendly AI builder toolkit: users pick a kit, copy it, remix it, and run it.
+## What It Does
 
-## Brand Position
+VibeKit helps builders discover a practical AI workflow, open the kit, copy the
+prompt or checklist, and run it directly in ChatGPT, Claude, Codex, Cursor, or
+another AI tool.
 
-**Tagline:** Everything you need to vibe with AI, copy-ready.
+The MVP includes:
 
-**One-line value:** Copy-ready AI kits for prompts, context, loops, agents, and skills.
+- Home page with category and featured kit discovery
+- Searchable kits listing page
+- Kit detail pages with copy-paste prompt blocks
+- Category, source policy, about, support, and submit pages
+- 20 local static sample kits
+- Source inspiration, license notes, and reuse status on kit pages
+- GitHub Issue Form for kit submissions
 
-**Core promise:** Stop collecting random prompts. Start using practical AI kits that help you build, research, write, debug, and automate.
+## Tech Stack
 
-## Document Map
+- Next.js App Router
+- TypeScript
+- Tailwind CSS
+- Local static content
+- Vercel hosting
 
-1. `00_PROJECT_BRIEF.md` — 서비스 개요와 핵심 포지션
-2. `01_PRODUCT_REQUIREMENTS.md` — PRD, 기능 요구사항, 비기능 요구사항
-3. `02_INFORMATION_ARCHITECTURE.md` — 페이지 구조, 라우트, 화면 구성
-4. `03_DATA_MODEL.md` — 콘텐츠 모델, JSON 스키마, 태그 구조
-5. `04_KIT_ENGINE.md` — GitHub 자료를 VibeKit으로 바꾸는 내부 운영 프로세스
-6. `05_CODEX_BUILD_PROMPTS.md` — Codex에게 단계별로 입력할 프롬프트
-7. `06_CONTENT_OPERATIONS.md` — 콘텐츠 작성 규칙, 품질 기준, 초기 콘텐츠 30개 설계
-8. `07_LEGAL_LICENSE_POLICY.md` — 라이선스/출처/복제 위험 관리 정책
-9. `08_MVP_EXECUTION_PLAN.md` — 7일 MVP 실행 계획
-10. `AGENTS.md` — Codex가 저장소에서 따라야 할 작업 지침
+No database, authentication, or paid subscription logic is required for the MVP.
 
-## Recommended Stack
+## Local Development
 
-- Framework: Next.js App Router
-- Language: TypeScript
-- Styling: Tailwind CSS
-- Content: Markdown/MDX or local JSON first
-- Search: Fuse.js first, Algolia later
-- Hosting: Vercel
-- Donation: Buy Me a Coffee external link
+Install dependencies:
 
-## MVP Goal
+```bash
+npm install
+```
 
-Build a clean, friendly, searchable, copy-ready AI kit library with 30 initial kit cards and a safe source attribution system.
+Run the dev server:
 
-## Naming Rules
+```bash
+npm run dev
+```
 
-Use `VibeKit` everywhere in the product UI. Avoid `Copyflow AI`, `workflow library`, or overly technical naming in user-facing copy. Internally, the product can still use terms such as `kit`, `source`, `license`, `verification`, and `exit condition`.
+Run checks:
+
+```bash
+npm run typecheck
+npm run lint
+npm run build
+```
+
+## Project Structure
+
+```text
+src/
+  app/
+    kits/
+    categories/
+    sources/
+    about/
+    support/
+    submit/
+  components/
+  data/
+  lib/
+```
+
+Key files:
+
+- `src/data/kits.ts` — local kit data
+- `src/data/categories.ts` — category definitions
+- `src/lib/types.ts` — TypeScript content model
+- `src/components/CopyBlock.tsx` — copy button and prompt block
+- `.github/ISSUE_TEMPLATE/kit_submission.yml` — kit submission form
+- `09_CONTENT_AUTOMATION_WORKFLOW.md` — content curation workflow
+
+## Content Model
+
+Every kit should include:
+
+- slug
+- title
+- category
+- summary and description
+- difficulty
+- best for
+- use when
+- do not use when
+- required context
+- workflow steps
+- copy-paste prompt
+- verification checklist
+- exit condition
+- expected output
+- tool-specific versions
+- tags
+- source inspiration
+- license note
+- reuse status
+
+Supported reuse status values:
+
+- `original`
+- `adapted_with_attribution`
+- `reference_only`
+- `do_not_copy_directly`
+
+## Source Policy
+
+VibeKit can be inspired by public AI workflows, official documentation, and
+open-source projects, but it should not copy external source text directly.
+
+Source-inspired kits should:
+
+- Use original VibeKit wording
+- Link to source references
+- Include license or terms notes when known
+- Mark reuse status clearly
+- Avoid leaked, proprietary, or unclear-rights prompt text
+
+If a source has no visible license, treat it as reference-only or do-not-copy
+until a human reviewer decides otherwise.
+
+## Contributing A Kit
+
+Use the Submit page on the live site:
+
+https://vibekit-seven.vercel.app/submit
+
+Or open a GitHub issue with the kit submission template:
+
+https://github.com/jjttuk7-bit/vibekit/issues/new?template=kit_submission.yml
+
+Good submissions are practical, original, copy-ready, and clear about source
+inspiration.
+
+## Deployment
+
+The app is designed for Vercel.
+
+Recommended settings:
+
+- Framework: Next.js
+- Build command: `npm run build`
+- Output directory: default
+
+Pushes to `main` can be deployed automatically through Vercel's GitHub
+integration.
